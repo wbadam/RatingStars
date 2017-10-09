@@ -5,7 +5,7 @@
     <artifactId>ratingstars-demo</artifactId>
     <packaging>war</packaging>
     <name>RatingStars Demo</name>
-    <version>3.0.0</version>
+    <version>3.0.0-compat</version>
 
     <licenses>
         <license>
@@ -18,7 +18,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-        <vaadin.version>8.0.0</vaadin.version>
+        <vaadin.version>8.1.5</vaadin.version>
         <vaadin.plugin.version>${vaadin.version}</vaadin.plugin.version>
 
         <maven.source.plugin.version>3.0.1</maven.source.plugin.version>
@@ -68,12 +68,12 @@
 
         <dependency>
             <groupId>com.vaadin</groupId>
-            <artifactId>vaadin-server</artifactId>
+            <artifactId>vaadin-compatibility-server</artifactId>
         </dependency>
 
         <dependency>
             <groupId>com.vaadin</groupId>
-            <artifactId>vaadin-client</artifactId>
+            <artifactId>vaadin-compatibility-client</artifactId>
         </dependency>
 
         <dependency>

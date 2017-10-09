@@ -163,18 +163,20 @@ public class RatingStarsDemo extends UI {
             userRating.setMaxValue(5);
             userRating.setValueCaption(valueCaptions.values().toArray(new String[5]));
             userRating.addValueChangeListener(event -> {
-                Double value = event.getValue();
+                Double value = (Double) event.getProperty().getValue();
 
                 Notification.show("You voted " + value + " stars for " + movieName + ".", Notification.Type.TRAY_NOTIFICATION);
 
-                RatingStars changedRs = (RatingStars) event.getComponent();
+                RatingStars changedRs = (RatingStars) event.getProperty();
                 // reset value captions
                 changedRs.setValueCaption(valueCaptions.values().toArray(new String[5]));
                 // set "Your Rating" caption
                 changedRs.setValueCaption((int) Math.round(value), "Your Rating");
 
                 // dummy logic to calculate "average" value
+                averageRating.setReadOnly(false);
                 averageRating.setValue((averageRating.getValue() + value) / 2);
+                averageRating.setReadOnly(true);
             });
 
             allRatingStars.add(userRating);
