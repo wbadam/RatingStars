@@ -1,15 +1,17 @@
 package org.vaadin.teemu.ratingstars;
 
-import com.vaadin.ui.AbstractField;
 import org.vaadin.teemu.ratingstars.gwt.client.RatingStarsServerRpc;
 import org.vaadin.teemu.ratingstars.gwt.client.RatingStarsState;
+
+import com.vaadin.v7.ui.AbstractField;
 
 /**
  * RatingStars is a typical rating component seen in many web applications.
  *
  * @author Teemu Pöntelin
  */
-public class RatingStars extends AbstractField<Double> implements Comparable<RatingStars> {
+public class RatingStars extends AbstractField<Double> implements
+        Comparable<RatingStars> {
     private static final long serialVersionUID = 4689425856123104186L;
 
     private final RatingStarsServerRpc rpc = new RatingStarsServerRpc() {
@@ -50,7 +52,8 @@ public class RatingStars extends AbstractField<Double> implements Comparable<Rat
      */
     public void setMaxValue(int maxValue) {
         if (maxValue <= 0) {
-            throw new IllegalArgumentException("Given maximum value (" + maxValue + ") must be greater than zero.");
+            throw new IllegalArgumentException("Given maximum value ("
+                    + maxValue + ") must be greater than zero.");
         }
         getState().maxValue = maxValue;
     }
@@ -72,13 +75,14 @@ public class RatingStars extends AbstractField<Double> implements Comparable<Rat
     }
 
     @Override
-    protected void doSetValue(Double value) {
+    public void setValue(Double value) {
+        super.setValue(value);
         getState().value = value;
     }
 
     @Override
-    public Double getValue() {
-        return getState().value;
+    public Class<Double> getType() {
+        return Double.class;
     }
 
     /**
